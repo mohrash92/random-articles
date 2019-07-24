@@ -1,5 +1,13 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const path = require('path');
+
 module.exports = {
+    entry: ['./src/index.js','./src/sass/main.scss'],
+    output : {
+        path: path.join(__dirname, 'dist'),
+        publicPath: '/',
+        filename: 'bundle.js'
+    },
     module: {
         rules: [
             {
@@ -16,6 +24,16 @@ module.exports = {
                         loader: "html-loader"
                     }
                 ]
+            },
+            {
+                test: /\.scss$/,
+                use: [{
+                    loader: "style-loader"
+                }, {
+                    loader: "css-loader"
+                }, {
+                    loader: "sass-loader"
+                },]
             }
         ]
     },

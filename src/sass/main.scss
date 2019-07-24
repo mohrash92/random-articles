@@ -1,0 +1,93 @@
+$colours: (
+  primary: #fffafe,
+  button: #ffffff,
+  border: #92a8d1
+);
+
+$padding: 15px;
+$borders: 15px;
+$large-button-height: 40px;
+$large-button-width: 220px;
+$medium-button-height: 33px;
+$medium-button-width: 130px;
+$font-size: 20px;
+
+@function colour($colour-name) {
+  @return map-get($colours, $colour-name);
+}
+
+body {
+  font-family: Helvetica;
+  background: colour(primary);
+
+  /* App Component */
+
+  .article-button, .next-button {
+    border: 2px solid colour(border);
+    height: $large-button-height;
+    width: $large-button-width;
+    font-size: $font-size;
+    border-radius: 25px;
+    cursor: pointer;
+    background-color: colour(button);
+  }
+
+  .welcome-section {
+    text-align: center;
+    padding: 20px;
+    margin: 1em auto;
+    border-radius: $borders;
+    width: 80%;
+  }
+  /* Article Component */
+  .article-section {
+    text-align: center;
+    margin: 1em auto;
+    border-radius: 15px;
+    width: 60%;
+
+    /* Paragraph Component */
+    .article-paragraph, .article-list {
+      text-align: left;
+      font-size: 15px;
+      font-size: 1.3vw;
+    }
+
+    @media (max-width: 768px) {
+      .article-paragraph, .article-list {
+        font-size: 15px;
+        font-size: 3vw;
+      }
+    }
+
+    /* Image Component */
+    .article-image {
+      max-width: 100%;
+      display:block;
+      height: auto;
+    }
+    img {
+      width:100%;
+      height:auto;
+    }
+
+    /* List Component */
+    .article-list {
+      font-weight: bold;
+    }
+
+    .next-button {
+      height: $medium-button-height;
+      width: $medium-button-width;
+    }
+    label {
+      padding:10px 20px 0px 0px;
+      margin:0 0 10px;
+      display:block;
+    }
+
+    label:hover {
+      cursor:pointer;
+    }
+  }
+}
