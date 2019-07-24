@@ -7,7 +7,6 @@ import { List } from '../shared/List.jsx';
 
 import { fetchSecondArticle, fetchThirdArticle } from '../../data/articles';
 
-
 class Article extends Component {
     constructor(props) {
         super(props);
@@ -18,10 +17,6 @@ class Article extends Component {
             isRead: false,
             totalReadArticles: []
         };
-    }
-
-    componentDidMount() {
-        this.setReadState()
     }
 
     // only update the component when the article data is different
@@ -38,25 +33,20 @@ class Article extends Component {
         return false;
     }
 
-    addToReadItems() {
-        const { isRead, totalReadArticles } = this.state;
+    addToReadArray() {
+        this.setState({
+            isRead: !this.state.isRead
+        });
+        const { totalReadArticles } = this.state;
         const { articleData: { title } } = this.props;
-        if (isRead && !totalReadArticles.includes(title)) {
+        if (!totalReadArticles.includes(title)) {
             totalReadArticles.push(title)
         }
     }
 
-    setReadState() {
-        this.setState({
-            isRead: !this.state.isRead
-        });
-        this.addToReadItems();
-    }
-
     getNextArticleFunction() {
         const { index, articleFunction } = this.state;
-
-        this.setState({ index: (index + 1)});
+        this.setState({ index: (index + 1), isRead: false});
         const articleRequestFunction = articleFunction[index];
 
         if (articleFunction.length === index) {
@@ -88,7 +78,7 @@ class Article extends Component {
                     })}
                     <div>
                         <label>
-                            <input type="checkbox" checked={isRead} onChange={() => this.setReadState()} />
+                            <input type="checkbox" checked={isRead} onChange={() => this.addToReadArray()} />
                             Read
                         </label>
                         <button className="next-button"  onClick={() => renderArticles(this.getNextArticleFunction())}>
