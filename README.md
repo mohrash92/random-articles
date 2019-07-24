@@ -19,7 +19,7 @@ Node v8.3.0
 
 - The app uses eslint and to run the linter you can use `npm run lint`
 
-###How to use
+### How to use
 1) On the first page, you will be presented with a welcome screen. To start viewing articles simply click on `Start Reading Articles` button. This will load up your first article.
 2) Once you have read the article, at the very bottom of the page, you will see a checkbox which you can use to specify you have read the article. You will also see a `Next Article` button which when pressed will load your next article.
 3) There are 3 articles in total, and when you reach to the end of reading them, you will be presented with a list of articles you selected read on.
